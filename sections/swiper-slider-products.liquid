@@ -1,0 +1,148 @@
+{{ 'section-main-slider.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+.section-slider-products{
+  background-color: {{ section.settings.bg_color }};
+}  
+{% endstyle %}
+<div class="container page-width">
+  {% if section.settings.title != blank %}
+    <h2 class="title">{{ section.settings.title }}</h2>
+  {% endif %}
+  <div class="main-slider-products">
+    {% if section.blocks.size > 0 %}
+
+      <!-- Slider Section -->
+      <div class="slider-container">
+        <!-- Swiper -->
+        <div class="swiper main-slider">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              {% if block.type == "featured_slider" %}
+                {% if block.settings.image %}
+                  <div class="swiper-slide">
+                    <img loading="lazy" src="{{ block.settings.image | img_url: "master" }}"> 
+                  </div> 
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+
+      <!-- 4 Products Section -->
+      <div class="products-container">
+        <ul>
+          {% for block in section.blocks %}
+            {% if block.type == "featured_product" %}
+              {% if block.settings.product %}
+                {% if block.settings.product %}
+                  <li class="products-container_item">
+                    <a href="{{ block.settings.product.url }}">
+                      <img loading="lazy" src="{{ block.settings.product.featured_image | img_url: "master" }}">
+                      <label>{{ block.settings.product.vendor }}</label>
+                      <h3>{{ block.settings.product.title }}</h3>
+                      <p>
+                        <label class="price">${{ block.settings.product.price | money_without_currency }}</label>
+                        <label class="entrega">Entrega hoy</label>
+                      </p>                
+                    </a>
+                  </li>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper(".main-slider", {
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Main Slider & Products",
+  "tag": "section",
+  "class": "section section-slider-products",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title", 
+      "label": "t:sections.collection-list.settings.title.label"
+    },
+    {
+      "type": "color",
+      "id": "bg_color", 
+      "default": "#F5F5F5",
+      "label": "Background Color"
+    } 
+  ],
+  "blocks": [
+    {
+      "type": "featured_slider",
+      "name": "Slider Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "featured_product",
+      "name": "Product",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ], 
+  "presets": [
+    {
+      "name": "Main Slider & Products",
+      "blocks": [
+        {
+          "type": "featured_slider"
+        },
+        {
+          "type": "featured_slider"
+        },
+        {
+          "type": "featured_slider"
+        },
+        {
+          "type": "featured_product"
+        },
+        {
+          "type": "featured_product"
+        },
+        {
+          "type": "featured_product"
+        },
+        {
+          "type": "featured_product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
