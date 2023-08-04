@@ -1,0 +1,132 @@
+{{ 'section-carrousel-slide.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+.section-carrousel-slider{
+  background-color: {{ section.settings.bg_color }};
+}  
+{% endstyle %}
+<div class="container page-width">
+  {% if section.settings.title != blank %}
+    <h2 class="title">{{ section.settings.title }}</h2>
+  {% endif %}
+  <div class="main-carrousel-container">
+    {% if section.blocks.size > 0 %}
+      <div class="slider-container">
+        <!-- Swiper -->
+        <div class="swiper carrousel-slider">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              <div class="swiper-slide">
+                {% if block.settings.image %}
+                  <img loading="lazy" src="{{ block.settings.image | img_url: "master" }}"> 
+                {% endif %}
+                {% if block.settings.title %}
+                  <a {% if block.settings.url %}href="{{ block.settings.url }}"{% endif %}>{{ block.settings.title }}</a>
+                {% endif %}
+              </div> 
+            {% endfor %}
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div> 
+    {% endif %}
+  </div>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper(".carrousel-slider", {
+    slidesPerView: 2,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: ".main-carrousel-container .swiper-button-next",
+      prevEl: ".main-carrousel-container .swiper-button-prev",
+    },
+    breakpoints: {
+      750: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+      },
+    },
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Carrousel Slider",
+  "tag": "section",
+  "class": "section section-carrousel-slider",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title", 
+      "label": "t:sections.collection-list.settings.title.label"
+    },
+    {
+      "type": "color",
+      "id": "bg_color", 
+      "default": "#F5F5F5",
+      "label": "Background Color"
+    } 
+  ],
+  "blocks": [ 
+    {
+      "type": "carrousel_slider",
+      "name": "Slide",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ], 
+  "presets": [
+    {
+      "name": "Carrousel Slider",
+      "blocks": [
+        {
+          "type": "carrousel_slider"
+        },
+        {
+          "type": "carrousel_slider"
+        },
+        {
+          "type": "carrousel_slider"
+        },
+        {
+          "type": "carrousel_slider"
+        },
+        {
+          "type": "carrousel_slider"
+        },
+        {
+          "type": "carrousel_slider"
+        },
+        {
+          "type": "carrousel_slider"
+        },
+        {
+          "type": "carrousel_slider"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

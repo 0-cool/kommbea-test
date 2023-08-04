@@ -1,0 +1,80 @@
+.section-carrousel-slider{
+    padding: 10px 0 60px 0;
+  }
+  .section-carrousel-slider h2.title{
+    font-weight: 700;
+  }
+  
+  .main-carrousel-container .slider-container{ position: relative; }
+  .main-carrousel-container .slider-container .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  .main-carrousel-container .slider-container .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px; 
+    flex-direction: column;
+    overflow: hidden;
+    margin-bottom: 18px;
+    box-shadow: 1px 1px 4px #423d3dbf;
+    -webkit-box-shadow: 1px 1px 4px 0px rgba(66,61,61,.75);
+    -moz-box-shadow: 1px 1px 4px 0px rgba(66,61,61,.75);
+  }
+  .main-carrousel-container .slider-container .swiper-slide img{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  .main-carrousel-container .slider-container .swiper-slide a{
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 10px 0;
+    margin-left: 30px;
+    font-weight: 700;
+    color: #000000;
+    position: relative;
+    cursor: pointer;
+  }
+  .main-carrousel-container .slider-container .swiper-button-next,
+  .main-carrousel-container .slider-container .swiper-button-prev{ 
+    display: block; 
+    background: #FFFFFF;
+    border-radius: 50%;
+    padding: 25px;
+    border: 1px solid #000000;
+    color: #000000;
+  } 
+  .main-carrousel-container .slider-container .swiper-button-next::after,
+  .main-carrousel-container .slider-container .swiper-button-prev::after{ 
+    margin-top: -10px;
+    display: block;
+    font-size: 20px;
+    margin-left: -3px;
+  } 
+  .main-carrousel-container .slider-container .swiper-button-prev::after{ margin-left: -6px; }
+  .main-carrousel-container .slider-container .swiper-button-prev{ left: -60px; }
+  .main-carrousel-container .slider-container .swiper-button-next{ right: -60px; }
+  
+  
+  @media screen and (max-width: 1120px){
+    .main-carrousel-container .slider-container .swiper-button-next,
+    .main-carrousel-container .slider-container .swiper-button-prev{
+      left: 0;
+      right:0;
+      margin: 0 auto;
+      top: 215px;
+    }
+    .main-carrousel-container .slider-container .swiper-button-prev{ left: -60px; }
+    .main-carrousel-container .slider-container .swiper-button-next{ right: -60px; }
+  }
+  
+  @media screen and (max-width: 750px){ 
+  }
+  @media screen and (max-width: 420px){ 
+  }
