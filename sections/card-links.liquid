@@ -1,0 +1,110 @@
+{{ 'section-card-links.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+.section-card-links{
+  background-color: {{ section.settings.bg_color }};
+}  
+{% endstyle %}
+<div class="container page-width">
+  {% if section.settings.title != blank %}
+    <h2 class="title">{{ section.settings.title }}</h2>
+  {% endif %}
+  <div class="main-card-links-container">
+    {% if section.blocks.size > 0 %}
+      <div class="card-container">
+        {% for block in section.blocks %}
+          <div 
+            {% if block.settings.image %}
+              style="background: url('{{ block.settings.image | img_url: "master" }}') no-repeat center; background-position: center; background-size: cover;" {% else %}
+              style="background-color: {{ block.settings.card_bg_color }}"
+            {% endif %} class="card-content"> 
+            <div class="text-content">
+              {% if block.settings.tag %}
+                <label>{{ block.settings.tag }}</label>
+              {% endif %}
+              {% if block.settings.title %}
+                <h3>{{ block.settings.title }}</h3>
+              {% endif %}
+              {% if block.settings.url_title %}
+                <a {% if block.settings.url %}href="{{ block.settings.url }}"{% endif %}>{{ block.settings.url_title }}</a>
+              {% endif %}
+            </div>
+          </div> 
+        {% endfor %}
+      </div> 
+    {% endif %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Card Links",
+  "tag": "section",
+  "class": "section section-card-links",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title", 
+      "label": "t:sections.collection-list.settings.title.label"
+    },
+    {
+      "type": "color",
+      "id": "bg_color", 
+      "default": "#FFFFFF",
+      "label": "Background Color"
+    } 
+  ],
+  "blocks": [ 
+    {
+      "type": "card",
+      "name": "Card",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "color",
+          "id": "card_bg_color", 
+          "default": "#FFFFFF",
+          "label": "Background Color"
+        }, 
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "url_title",
+          "label": "Text Link"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ], 
+  "presets": [
+    {
+      "name": "Card Links",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

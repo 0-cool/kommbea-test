@@ -1,0 +1,55 @@
+.section-card-links{
+    padding: 50px 0;
+  }
+  .section-card-links h2.title{
+    font-weight: 700;
+  }
+  .main-card-links-container .card-container{
+    display: flex;
+    justify-content: space-between;
+  }
+  .main-card-links-container .card-container .card-content{
+    width: 49%;
+    border-radius: 10px;
+  }
+  .main-card-links-container .card-container .card-content .text-content{
+    width: 50%;
+    padding: 30px 20px;
+    color: #FFFFFF;
+  }
+  .main-card-links-container .card-container .card-content .text-content h3{
+    font-weight: 700;
+    font-size: 4rem;
+    color: #FFFFFF;
+    margin-top: 0;
+  }
+  
+  .main-card-links-container .card-container .card-content .text-content a{
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    text-align: center;
+    padding: 15px 0;
+    font-weight: 700;
+    margin-bottom: 30px;
+    cursor: pointer;
+  }
+  
+  @media screen and (max-width: 1120px){
+    .main-card-links-container .card-container .card-content{
+      width: 100%;
+      margin: 20px 0;
+    }
+    .main-card-links-container .card-container{
+      flex-direction: column;
+    }
+  }
+   
+  @media screen and (max-width: 470px){
+    .main-card-links-container .card-container .card-content .text-content{
+      width: 100%;
+    }
+  }
+   
