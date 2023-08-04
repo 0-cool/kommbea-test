@@ -1,0 +1,62 @@
+.section-icons-links{
+    padding: 50px 0;
+  }
+  .section-icons-links h2.title{
+    font-weight: 700;
+  }
+  .main-icons-links-container .icons-container{ 
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around; 
+  }
+  .main-icons-links-container .icons-container .icon-content{
+    width: 20%;
+    display: flex;
+    margin: 20px 1px;
+    position: relative;
+  }
+  
+  .main-icons-links-container .icons-container .icon-content:last-child::after{ display: none; }
+  .main-icons-links-container .icons-container .icon-content::after{
+    content: "";
+    height: 100%;
+    width: 1px;
+    background: #F8F8F8;
+    right: -12px;
+    position: absolute;
+  }
+  .main-icons-links-container .icons-container .icon-content img{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  .main-icons-links-container .icons-container .icon-content .text-content{
+    position: relative;
+    padding: 0 0 0 15px;
+  }
+  .main-icons-links-container .icons-container .icon-content .text-content h3{
+    margin: 0;
+    font-weight: 700;
+  }
+  .main-icons-links-container .icons-container .icon-content .text-content a{
+    position: absolute;
+    bottom: -5px;
+    text-decoration: underline;
+    font-weight: 700;
+    color: #DF847C;
+  }
+  
+  @media screen and (max-width: 1120px){
+    .main-icons-links-container .icons-container .icon-content{
+      width: 49%;
+    }
+  }
+  
+  @media screen and (max-width: 480px){ 
+    .main-icons-links-container .icons-container .icon-content{
+      width: 100%;
+      margin: 20px 0px;
+    }
+  }
