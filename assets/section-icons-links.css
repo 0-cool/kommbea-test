@@ -46,6 +46,7 @@
     text-decoration: underline;
     font-weight: 700;
     color: #DF847C;
+    cursor: pointer;
   }
   
   @media screen and (max-width: 1120px){
